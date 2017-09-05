@@ -16,7 +16,9 @@ $game_won = false;
 if (isset($_SESSION['correct'])) {
   $game_won = !(in_array("_ ", $_SESSION['correct']));
 }
-
+if ($_SESSION['continued_game'] == "FALSE") {
+  $_SESSION['numWrongGuesses'] = 0;
+}
 if ((isset($_REQUEST['action']) && $_REQUEST['action'] == 'end') || $_SESSION['numWrongGuesses'] > 7 || $game_won) {
   $new_escape = TRUE;
 } else {
